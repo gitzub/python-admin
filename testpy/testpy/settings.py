@@ -120,7 +120,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # 커스텀 유저 custom user
-AUTH_USER_MODEL = 'home.CustomUser'
+AUTH_USER_MODEL = 'home.User'
 
 
 # Default primary key field type
