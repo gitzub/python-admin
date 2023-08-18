@@ -15,7 +15,7 @@ from django.contrib.auth.models import Group
 # ================================================== #
 
 
-class CustomUserManager(BaseUserManager):
+class UserManager(BaseUserManager):
     use_in_migrations = True
 
     def _create_user(self, username, password, **extra_fields):
@@ -41,13 +41,13 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('is_superuser=True일 필요가 있습니다.')
         return self._create_user(username, password, **extra_fields)
 
-class CustomUser(AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin):
     username_validator = UnicodeUsernameValidator()
     username = models.CharField(_("username"), max_length=50, validators=[username_validator], unique=True)
-    mychoicegroup = models.ForeignKey(Group, on_delete=models.SET_NULL, blank=True, null=True, verbose_name='my choice group list', related_name='appliers_CustomUser_mychoicegroup')
+    mychoicegroup = models.ForeignKey(Group, on_delete=models.SET_NULL, blank=True, null=True, verbose_name='my choice group list', related_name='appliers_User_mychoicegroup')
     is_staff = models.BooleanField(_("staff status"), default=False)
     is_active = models.BooleanField(_("active"), default=True)
-    objects = CustomUserManager()
+    objects = UserManager()
     USERNAME_FIELD = "username"
 
     class Meta:
