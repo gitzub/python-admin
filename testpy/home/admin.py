@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.utils.translation import gettext_lazy as _
-from .models import CustomUser
+from .models import User
 
 # ================================================== #
 # ================================================== #
@@ -17,12 +17,12 @@ from .models import CustomUser
 # # # 에러 def 방식 # # #
 class MyUserChangeForm(UserChangeForm):
     class Meta:
-        model = CustomUser
+        model = User
         fields = '__all__'
 
 class MyUserCreationForm(UserCreationForm):
     class Meta:
-        model = CustomUser
+        model = User
         fields = '__all__'
 
 class MyUserAdmin(UserAdmin):
@@ -63,19 +63,19 @@ class MyUserAdmin(UserAdmin):
             ordering = ('username',)
         return fieldsets, add_fieldsets, form, add_form, list_display, list_filter, search_fields, ordering
 
-admin.site.register(CustomUser, MyUserAdmin)
+admin.site.register(User, MyUserAdmin)
 
 
 
 # # # 정상작동 class 방식 # # #
 # class MyUserChangeForm(UserChangeForm):
 #     class Meta:
-#         model = CustomUser
+#         model = User
 #         fields = '__all__'
 
 # class MyUserCreationForm(UserCreationForm):
 #     class Meta:
-#         model = CustomUser
+#         model = User
 #         fields = '__all__'
 
 # class MyUserAdmin(UserAdmin):
@@ -97,4 +97,4 @@ admin.site.register(CustomUser, MyUserAdmin)
 #     search_fields = ('username', 'mychoicegroup')
 #     ordering = ('username',)
 
-# admin.site.register(CustomUser, MyUserAdmin)
+# admin.site.register(User, MyUserAdmin)
