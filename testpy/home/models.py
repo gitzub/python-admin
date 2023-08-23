@@ -35,7 +35,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username_validator = UnicodeUsernameValidator()
     username = models.CharField(_("username"), max_length=50, validators=[username_validator], unique=True)
 
-# ====================== 2번 =====================================
+# ====================== 1번 =====================================
 # ================================================================
 # admin사이트에서 유저등록시 로그인한 id(username)에 따라 mychoicegroup 항목에 동일한 이름의 그룹 노출
 # 로그인한 id(username)가 test1이면 test1그룹 / test2면 test2그룹
@@ -48,7 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 
-# ====================== 3번 ======================= #
+# ====================== 2번 ======================= #
 # ================================================== #
 # admin페이지에서 user등록이나 수정시 선택된 mychoicegroup가 그룹 에 함께 적용되도록 요청드립니다.
 # ================================================== #
